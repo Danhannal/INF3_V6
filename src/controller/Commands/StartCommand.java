@@ -24,7 +24,8 @@ public class StartCommand implements CommandInterface
     
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        view.getBtnStart().setEnabled(false);
+        view.getBtnStop().setEnabled(true);
     }
     
 }
