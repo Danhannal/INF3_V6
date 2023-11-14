@@ -4,6 +4,8 @@
  */
 package versuch_6;
 
+import view.*;
+
 /**
  *
  * @author MOD-USER
@@ -13,8 +15,15 @@ public class Start {
     /**
      * @param args the command line arguments
      */
+    
+    public Start()
+    {
+        var view = new MainWindow();
+        view.setVisible(true);
+    }
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        new Start();
     }
     
 }
