@@ -43,7 +43,13 @@ public class WuerfelModel// implements Runnable
 
   public void start()
   {
-    
+    //V1 start publishing thread
+    //V2 create thread to run in
+    //V3 notify to exit wait state of thread
+  }
+    public void stop()
+  {
+    //
   }
   //@Override
   public void run()
