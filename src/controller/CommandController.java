@@ -4,6 +4,8 @@
  */
 package controller;
 
+import controller.Commands.StartCommand;
+import controller.Commands.StopCommand;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.MainWindow;
@@ -15,22 +17,26 @@ import view.MainWindow;
 public class CommandController implements ActionListener
 {
     MainWindow view;
-    Model model;
+    WuerfelModel model;
+    CommandInvoker invoker;
     
-    public CommandController(MainWindow viewInp, Model modelInp)
+    public CommandController(MainWindow viewInp, WuerfelModel modelInp)
     {
         view = viewInp;
         model = modelInp;
+        invoker = new CommandInvoker();
     }
     
     public void registerEvents()
     {
-        
+        view.getBtnStart().addActionListener(this);
+        view.getBtnStop().addActionListener(this);
     }
     
     public void registerCommands()
     {
-        
+        invoker.addCommand(view.getBtnStart(), new StartCommand());
+        invoker.addCommand(view.getBtnStop(), new StopCommand());
     }
     
     @Override
