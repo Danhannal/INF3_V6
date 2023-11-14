@@ -5,6 +5,7 @@
 package controller.Commands;
 
 import controller.CommandInterface;
+import view.MainWindow;
 
 /**
  *
@@ -12,7 +13,15 @@ import controller.CommandInterface;
  */
 public class StopCommand implements CommandInterface
 {
-
+    private final MainWindow view;
+    private final WuerfelModel model;
+    
+    public StopCommand(MainWindow viewInp, WuerfelModel model)
+    {
+        view = viewInp;
+        model = modelInp;
+    }
+    
     @Override
     public void execute() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
