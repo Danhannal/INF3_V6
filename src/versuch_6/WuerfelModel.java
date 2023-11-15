@@ -5,6 +5,7 @@
 
 package versuch_6;
 
+import java.lang.System.Logger;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Flow.Subscriber;
@@ -44,17 +45,24 @@ public class WuerfelModel// implements Runnable
   public void start()
   {
     //V1 start publishing thread
+    statusPublisher.submit(true);
+    running = true;
     //V2 create thread to run in
+    
     //V3 notify to exit wait state of thread
   }
     public void stop()
   {
-    //
+    //V1 Stop publishing
+    statusPublisher.submit(false);
+    running = false;
+    //V2 destroy thread
+    //V3 wait thread
   }
   //@Override
   public void run()
   {
-    while(running)
+    while(true)
     {
       try
       {
@@ -62,11 +70,16 @@ public class WuerfelModel// implements Runnable
       }
       catch(InterruptedException exception)
       {
-        
+        //Logger.getLogger(WuerfelModel.class.getName().severe(exception.toString()));
       }
       if(currentNumber >= runTo){currentNumber = runFrom;}
       else{currentNumber +=1;}
-      
+      //publish new number
+      if (running ==true)
+      {
+      numberPublisher.submit(currentNumber);
+      //für status das code läuft möglicherweise überflüssig
+      }
     }
   }
 }
