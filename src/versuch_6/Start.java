@@ -26,6 +26,7 @@ public class Start {
         var controller = new CommandController(view, model, observer);
         controller.registerCommands();
         controller.registerEvents();
+        view.setTitle("Digitaler Würfel");
         view.setVisible(true);
     }
     
