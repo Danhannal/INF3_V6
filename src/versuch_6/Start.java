@@ -4,6 +4,7 @@
  */
 package versuch_6;
 
+import adapter.Adapter;
 import controller.CommandController;
 import view.*;
 
@@ -21,7 +22,8 @@ public class Start {
     {
         var view = new MainWindow();
         var model = new WuerfelModel();
-        var controller = new CommandController(view, model);
+        var observer = new Adapter(view, model);
+        var controller = new CommandController(view, model, observer);
         controller.registerCommands();
         controller.registerEvents();
         view.setVisible(true);
