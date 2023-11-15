@@ -6,6 +6,7 @@ package adapter;
 
 import java.util.Observable;
 import java.util.Observer;
+import view.MainWindow;
 
 /**
  *
@@ -16,7 +17,11 @@ public class Adapter implements Observer
     private final MainWindow view;
     private final WuerfelModel model;
     
-    
+    public Adapter(MainWindow viewInp, WuerfelModel modelInp)
+    {
+        view = viewInp;
+        model = modelInp;
+    }
     
     @Override
     public void update(Observable o, Object arg) {
