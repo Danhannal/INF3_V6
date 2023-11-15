@@ -63,6 +63,7 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1.add(btnStart);
 
         btnStop.setText("Stop");
+        btnStop.setEnabled(false);
         jPanel1.add(btnStop);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
