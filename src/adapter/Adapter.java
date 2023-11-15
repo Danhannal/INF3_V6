@@ -26,7 +26,6 @@ public class Adapter implements Observer
     
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        view.getLblNumber().setText("!");       //just for testing purpose
     }
-    
 }
