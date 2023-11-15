@@ -6,6 +6,7 @@ package controller.Commands;
 
 import controller.CommandInterface;
 import view.MainWindow;
+import versuch_6.*;
 
 /**
  *
@@ -16,7 +17,7 @@ public class StopCommand implements CommandInterface
     private final MainWindow view;
     private final WuerfelModel model;
     
-    public StopCommand(MainWindow viewInp, WuerfelModel model)
+    public StopCommand(MainWindow viewInp, WuerfelModel modelInp)
     {
         view = viewInp;
         model = modelInp;

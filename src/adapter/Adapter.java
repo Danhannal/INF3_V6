@@ -7,6 +7,7 @@ package adapter;
 import java.util.Observable;
 import java.util.Observer;
 import view.MainWindow;
+import versuch_6.*;
 
 /**
  *

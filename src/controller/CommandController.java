@@ -9,6 +9,7 @@ import controller.Commands.StopCommand;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.MainWindow;
+import versuch_6.*;
 
 /**
  *
@@ -35,8 +36,8 @@ public class CommandController implements ActionListener
     
     public void registerCommands()
     {
-        invoker.addCommand(view.getBtnStart(), new StartCommand());
-        invoker.addCommand(view.getBtnStop(), new StopCommand());
+        invoker.addCommand(view.getBtnStart(), new StartCommand(view, model));
+        invoker.addCommand(view.getBtnStop(), new StopCommand(view, model));
     }
     
     @Override

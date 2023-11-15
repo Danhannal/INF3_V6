@@ -6,6 +6,7 @@ package controller.Commands;
 
 import controller.CommandInterface;
 import view.MainWindow;
+import versuch_6.*;
 
 /**
  *
