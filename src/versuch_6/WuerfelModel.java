@@ -15,12 +15,16 @@ import java.util.concurrent.Flow;
 public class WuerfelModel// implements Runnable 
 {
   private WuerfelThread runningThread;
-  public WuerfelModel(Flow.Subscriber<Integer> subscriber)
+  public WuerfelModel()
   {
     runningThread = new WuerfelThread();
+    
+  }
+  
+  public void addObserver(Flow.Subscriber<Integer> subscriber)
+  {
     runningThread.addValueSubscriber(subscriber);
   }
-
   public void start()
   {
     //V1 start publishing thread

@@ -36,7 +36,7 @@ public class CommandController implements ActionListener
     {
         view.getBtnStart().addActionListener(this);
         view.getBtnStop().addActionListener(this);
-        //model.addObserver(observer);  model must be Observable for this to work
+        //model.addObserver(observer);  //model must be Observable for this to work
     }
     
     public void registerCommands()
