@@ -4,8 +4,10 @@
  */
 package controller;
 
+import adapter.Adapter;
 import controller.Commands.StartCommand;
 import controller.Commands.StopCommand;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.MainWindow;
@@ -19,12 +21,14 @@ public class CommandController implements ActionListener
 {
     MainWindow view;
     WuerfelModel model;
+    Adapter observer;
     CommandInvoker invoker;
     
-    public CommandController(MainWindow viewInp, WuerfelModel modelInp)
+    public CommandController(MainWindow viewInp, WuerfelModel modelInp, Adapter observerInp)
     {
         view = viewInp;
         model = modelInp;
+        observer = observerInp;
         invoker = new CommandInvoker();
     }
     
@@ -32,6 +36,7 @@ public class CommandController implements ActionListener
     {
         view.getBtnStart().addActionListener(this);
         view.getBtnStop().addActionListener(this);
+        //model.addObserver(observer);  model must be Observable for this to work
     }
     
     public void registerCommands()
@@ -42,7 +47,8 @@ public class CommandController implements ActionListener
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        var key = (Component)e.getSource();
+        invoker.executeCommand(key);
     }
     
 }

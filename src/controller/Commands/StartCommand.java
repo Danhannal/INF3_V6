@@ -27,6 +27,8 @@ public class StartCommand implements CommandInterface
     public void execute() {
         view.getBtnStart().setEnabled(false);
         view.getBtnStop().setEnabled(true);
+        
+        model.start();
     }
     
 }

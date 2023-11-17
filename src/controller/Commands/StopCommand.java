@@ -27,6 +27,8 @@ public class StopCommand implements CommandInterface
     public void execute() {
         view.getBtnStart().setEnabled(true);
         view.getBtnStop().setEnabled(false);
+        
+        model.stop();
     }
     
 }
