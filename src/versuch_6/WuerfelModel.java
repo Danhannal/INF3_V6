@@ -5,6 +5,8 @@
 
 package versuch_6;
 
+import java.util.concurrent.Flow;
+
 
 /**
  *
@@ -13,9 +15,10 @@ package versuch_6;
 public class WuerfelModel// implements Runnable 
 {
   private WuerfelThread runningThread;
-  public WuerfelModel()
+  public WuerfelModel(Flow.Subscriber<Integer> subscriber)
   {
     runningThread = new WuerfelThread();
+    runningThread.addValueSubscriber(subscriber);
   }
 
   public void start()
