@@ -53,16 +53,22 @@ public class MainWindow extends javax.swing.JFrame {
         btnStop = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(280, 300));
 
         lblNumber.setFont(new java.awt.Font("Segoe UI", 0, 200)); // NOI18N
         lblNumber.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNumber.setText("8");
         getContentPane().add(lblNumber, java.awt.BorderLayout.CENTER);
 
+        btnStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/toolbarButtonGraphics/media/Play16.gif"))); // NOI18N
         btnStart.setText("Start");
+        btnStart.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         jPanel1.add(btnStart);
 
+        btnStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/toolbarButtonGraphics/media/Pause16.gif"))); // NOI18N
         btnStop.setText("Stop");
+        btnStop.setEnabled(false);
+        btnStop.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         jPanel1.add(btnStop);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
