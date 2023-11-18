@@ -4,7 +4,7 @@
  */
 package versuch_6;
 
-import adapter.Adapter;
+import adapter.ValueAdapter;
 import controller.CommandController;
 import view.*;
 
@@ -22,8 +22,8 @@ public class Start {
     {
         var view = new MainWindow();
         var model = new WuerfelModel();
-        var observer = new Adapter(view, model);
-        var controller = new CommandController(view, model, observer);
+        var valueObserver = new ValueAdapter(view, model);
+        var controller = new CommandController(view, model, valueObserver);
         controller.registerCommands();
         controller.registerEvents();
         view.setTitle("Digitaler Würfel");
