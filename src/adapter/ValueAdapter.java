@@ -27,7 +27,7 @@ public class ValueAdapter implements Subscriber<Integer>
 
     public void subscribe()
     {
-        model.addObserver(this);
+        model.addValueObserver(this);
     }
     
     @Override

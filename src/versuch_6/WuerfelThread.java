@@ -19,7 +19,7 @@ public class WuerfelThread implements Runnable
   private int runFrom;
   private int runTo;
   private int currentNumber;
-  public boolean running;
+  public boolean _running;
   private ExecutorService eService;
   private SubmissionPublisher <Integer> numberPublisher;
   public SubmissionPublisher <Boolean> statusPublisher;
@@ -29,7 +29,7 @@ public class WuerfelThread implements Runnable
   {
     runFrom = 1;
     runTo = 6;
-    running = false;
+    _running = false;
     eService = Executors.newSingleThreadExecutor();
     numberPublisher = new SubmissionPublisher<>();
     statusPublisher = new SubmissionPublisher<>();
@@ -61,7 +61,7 @@ public class WuerfelThread implements Runnable
       if(currentNumber >= runTo){currentNumber = runFrom;}
       else{currentNumber +=1;}
       //publish new number
-      if (running ==true)
+      if (_running ==true)
       {
       numberPublisher.submit(currentNumber);
       //für status das code läuft möglicherweise überflüssig
