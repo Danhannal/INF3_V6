@@ -4,7 +4,7 @@
  */
 package controller;
 
-import adapter.Adapter;
+import adapter.ValueAdapter;
 import controller.Commands.StartCommand;
 import controller.Commands.StopCommand;
 import java.awt.Component;
@@ -21,14 +21,14 @@ public class CommandController implements ActionListener
 {
     MainWindow view;
     WuerfelModel model;
-    Adapter observer;
+    ValueAdapter valueObserver;
     CommandInvoker invoker;
     
-    public CommandController(MainWindow viewInp, WuerfelModel modelInp, Adapter observerInp)
+    public CommandController(MainWindow viewInp, WuerfelModel modelInp, ValueAdapter valueObserverInp)
     {
         view = viewInp;
         model = modelInp;
-        observer = observerInp;
+        valueObserver = valueObserverInp;
         invoker = new CommandInvoker();
     }
     
@@ -36,7 +36,7 @@ public class CommandController implements ActionListener
     {
         view.getBtnStart().addActionListener(this);
         view.getBtnStop().addActionListener(this);
-        //model.addObserver(observer);  //model must be Observable for this to work
+        valueObserver.subscribe();
     }
     
     public void registerCommands()
