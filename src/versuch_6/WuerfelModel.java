@@ -15,10 +15,13 @@ import java.util.concurrent.Flow;
 public class WuerfelModel// implements Runnable 
 {
   private WuerfelThread runningThread;
+  private Thread thd;
   public WuerfelModel()
   {
     runningThread = new WuerfelThread();
-    
+    thd = new Thread(runningThread);
+    thd.start();
+
   }
   
   public void addObserver(Flow.Subscriber<Integer> subscriber)
