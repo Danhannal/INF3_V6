@@ -15,21 +15,29 @@ import java.util.concurrent.Flow;
 public class WuerfelModel// implements Runnable 
 {
   private WuerfelThread runningThread;
+  private Thread thd;
   public WuerfelModel()
   {
-   // runningThread = new WuerfelThread();
+   runningThread = new WuerfelThread();
   }
   
-  public void addObserver(Flow.Subscriber<Integer> subscriber)
+  public void addValueObserver(Flow.Subscriber<Integer> subscriber)
   {
     runningThread.addValueSubscriber(subscriber);
   }
+  
+  public void addStateObserver(Flow.Subscriber<Boolean> subscirber)
+  {
+      runningThread.addStatusSubscriber(subscirber);
+  }
+  
   public void start()
   {
     //V1 start publishing thread
 
     //V2 create thread to run in
-    runningThread = new WuerfelThread();
+    thd = new Thread(runningThread);
+    thd.start();
     runningThread.statusPublisher.submit(true);
     //V3 notify to exit wait state of thread
   }
