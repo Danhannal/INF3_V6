@@ -21,7 +21,7 @@ public class WuerfelModel// implements Runnable
    runningThread = new WuerfelThread();
   }
   
-  public void addValueObserver(Flow.Subscriber<Integer> subscriber)
+  public void addObserver(Flow.Subscriber<Integer> subscriber)
   {
     runningThread.addValueSubscriber(subscriber);
   }
@@ -39,6 +39,7 @@ public class WuerfelModel// implements Runnable
     thd = new Thread(runningThread);
     thd.start();
     runningThread.statusPublisher.submit(true);
+    runningThread.running = true;
     //V3 notify to exit wait state of thread
   }
     public void stop()
