@@ -28,17 +28,16 @@ public class WuerfelModel// implements Runnable
   public void start()
   {
     //V1 start publishing thread
-    runningThread.statusPublisher.submit(true);
-    runningThread.running = true;
+    //runningThread.statusPublisher.submit(true);
+    runningThread.start();
     //V2 create thread to run in
-    
     //V3 notify to exit wait state of thread
   }
     public void stop()
   {
     //V1 Stop publishing
-    runningThread.statusPublisher.submit(false);
-    runningThread.running = false;
+    //runningThread.statusPublisher.submit(false);
+    runningThread.stop();
     //V2 destroy thread
     //V3 wait thread
   }

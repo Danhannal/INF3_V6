@@ -44,6 +44,15 @@ public class WuerfelThread implements Runnable
     statusPublisher.subscribe(subscriber);
   }
 
+   public synchronized void stop()
+   {
+     try{wait();}
+     catch(InterruptedException e){e.printStackTrace();}
+   }
+   public synchronized void start()
+   {
+     notify();
+   }
 
   @Override
   public void run()
