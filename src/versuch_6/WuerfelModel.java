@@ -45,9 +45,13 @@ public class WuerfelModel// implements Runnable
     {
     thd = new Thread(runningThread);
     thd.start();
+    runningThread.start();
     threadRunning = true;
     }
-    else{    runningThread.start();}
+    else{    
+      runningThread.start();
+      //thd.notify();
+    }
     //V1 start publishing thread
     //runningThread.statusPublisher.submit(true);
 
@@ -57,6 +61,7 @@ public class WuerfelModel// implements Runnable
     public void stop()
   {
     //V1 Stop publishing
+   
     //runningThread.statusPublisher.submit(false);
     runningThread.stop();
     //V2 destroy thread
