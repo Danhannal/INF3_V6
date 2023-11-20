@@ -19,7 +19,7 @@ public class WuerfelThread implements Runnable
   private int runFrom;
   private int runTo;
   private int currentNumber;
-  public boolean running;
+  public volatile boolean running;
   private ExecutorService eService;
   private SubmissionPublisher <Integer> numberPublisher;
   public SubmissionPublisher <Boolean> statusPublisher;
@@ -33,7 +33,7 @@ public class WuerfelThread implements Runnable
     eService = Executors.newSingleThreadExecutor();
     numberPublisher = new SubmissionPublisher<>();
     statusPublisher = new SubmissionPublisher<>();
-  
+    //stop();
   }
   public void addValueSubscriber(Flow.Subscriber<Integer> subscriber)
   {
@@ -46,12 +46,14 @@ public class WuerfelThread implements Runnable
 
    public synchronized void stop()
    {
-     try{wait();}
-     catch(InterruptedException e){e.printStackTrace();}
+     running = false;
+     //set var that causes this.wait in run that uses while
+
    }
    public synchronized void start()
    {
-     notify();
+     running = true;
+     this.notify();
    }
 
   @Override
@@ -59,6 +61,11 @@ public class WuerfelThread implements Runnable
   {
     while(true)
     {
+      while(!running)
+      {
+        try{synchronized(this){this.wait();}}
+        catch(InterruptedException e){e.printStackTrace();}
+      }
       try
       {
         Thread.sleep(20);
@@ -70,11 +77,10 @@ public class WuerfelThread implements Runnable
       if(currentNumber >= runTo){currentNumber = runFrom;}
       else{currentNumber +=1;}
       //publish new number
-      if (running ==true)
-      {
+
       numberPublisher.submit(currentNumber);
       //für status das code läuft möglicherweise überflüssig
-      }
+      
     }
   }
 }
