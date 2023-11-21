@@ -56,7 +56,7 @@ public class WuerfelThread implements Runnable
       }
       catch(InterruptedException exception)
       {
-        //Logger.getLogger(WuerfelModel.class.getName().severe(exception.toString()));
+        exception.printStackTrace();
       }
       if(currentNumber >= runTo){currentNumber = runFrom;}
       else{currentNumber +=1;}
@@ -64,7 +64,6 @@ public class WuerfelThread implements Runnable
       if (running ==true)
       {
       numberPublisher.submit(currentNumber);
-      //für status das code läuft möglicherweise überflüssig
       }
     }
   }
