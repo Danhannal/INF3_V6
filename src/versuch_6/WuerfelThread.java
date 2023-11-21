@@ -72,6 +72,7 @@ public class WuerfelThread implements Runnable
       }
       catch(InterruptedException exception)
       {
+        exception.printStackTrace();
         //Logger.getLogger(WuerfelModel.class.getName().severe(exception.toString()));
       }
       if(currentNumber >= runTo){currentNumber = runFrom;}

@@ -20,9 +20,6 @@ public class WuerfelModel// implements Runnable
   public WuerfelModel()
   {
     runningThread = new WuerfelThread();
-
-    //stop();
-    //runningThread.stop();
   }
   
   public void addObserver(Flow.Subscriber<Integer> subscriber)
